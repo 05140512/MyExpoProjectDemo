@@ -27,6 +27,7 @@ function TabNavigator() {
         headerShown: true, // 显示顶部导航
         tabBarActiveTintColor: 'tomato', // 选中时的颜色
         tabBarInactiveTintColor: 'gray', // 未选中时的颜色
+        statusBarTranslucent: true,
         tabBarIcon: ({ color, size }) => {
           let iconName: keyof typeof Ionicons.glyphMap = 'home';
           if (route.name === 'Home') return <HomeIcon width={size} height={size} fill={color} />;
@@ -36,7 +37,7 @@ function TabNavigator() {
         },
       })}
     >
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
       <Tab.Screen name="Profile" component={ProfileScreen} />
       <Tab.Screen name="Settings" component={SettingsScreen} />
     </Tab.Navigator>
@@ -83,8 +84,8 @@ export default function AppNavigator() {
       <NavigationContainer>
         <StatusBar
           barStyle="dark-content"
-          backgroundColor="transparent"
-          translucent={true}
+          backgroundColor="white"
+          translucent={false}
         />
         <Stack.Navigator>
           {/* 主 Tab 页 */}

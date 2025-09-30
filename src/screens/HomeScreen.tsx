@@ -1,18 +1,19 @@
 import React from 'react';
-import { View, Text, Button } from 'react-native';
+// import { View, Text, Button, SafeAreaView } from 'react-native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import FaXian from './FaXian';
+import GuanZhu from './GuanZhu';
 
-export default function HomeScreen({ navigation }: any) {
+const Tab = createMaterialTopTabNavigator();
+
+export default function HomeScreen() {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>🏠 Home Screen (Expo)</Text>
-      <Button
-        title="Go to Profile"
-        onPress={() => navigation.navigate('Profile')}
-      />
-      <Button
-        title="Go to Stack Detail"
-        onPress={() => navigation.navigate('Detail')}
-      />
-    </View>
+    <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
+      <Tab.Navigator>
+        <Tab.Screen name="发现" component={FaXian} />
+        <Tab.Screen name="关注" component={GuanZhu} />
+      </Tab.Navigator>
+    </SafeAreaView>
   );
 }
